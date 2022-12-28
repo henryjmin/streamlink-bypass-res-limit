@@ -212,7 +212,7 @@ class UsherService:
         self.session = session
 
     def _create_url(self, endpoint, **extra_params):
-        url = f"https://usher.ttvnw.net{endpoint}"
+        url = f"https://api.twitch.tyo.kwabang.net{endpoint}"
         params = {
             "player": "twitchweb",
             "p": int(random() * 999999),
@@ -243,7 +243,7 @@ class UsherService:
             log.debug(f"{extra_params_debug!r}")
         except PluginError:
             pass
-        return self._create_url(f"/api/channel/hls/{channel}.m3u8", **extra_params)
+        return self._create_url(f"/hls-raw/{channel}.m3u8", **extra_params)
 
     def video(self, video_id, **extra_params):
         return self._create_url(f"/vod/{video_id}", **extra_params)
